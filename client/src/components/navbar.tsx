@@ -42,14 +42,6 @@ export function Navbar() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => scrollToSection("about")}
-              data-testid="nav-about"
-            >
-              Hakkımda
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
               onClick={() => scrollToSection("contact")}
               data-testid="nav-contact"
             >
@@ -96,14 +88,6 @@ export function Navbar() {
               data-testid="nav-mobile-projects"
             >
               Projeler
-            </Button>
-            <Button
-              variant="ghost"
-              className="w-full justify-start"
-              onClick={() => scrollToSection("about")}
-              data-testid="nav-mobile-about"
-            >
-              Hakkımda
             </Button>
             <Button
               variant="ghost"

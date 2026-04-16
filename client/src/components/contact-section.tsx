@@ -316,7 +316,7 @@ export function ContactSection() {
                   <div>
                     <h3 className="font-semibold text-foreground mb-1" data-testid="text-address-label">Konum</h3>
                     <p className="text-muted-foreground" data-testid="text-address-value">
-                      İstanbul, Türkiye
+                      Ankara, Türkiye
                     </p>
                   </div>
                 </div>

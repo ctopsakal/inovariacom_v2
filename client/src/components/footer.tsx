@@ -32,13 +32,8 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="icon" asChild>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-testid="link-linkedin">
+                <a href="https://www.linkedin.com/company/i-novaria/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-testid="link-linkedin">
                   <Linkedin className="w-5 h-5" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" data-testid="link-twitter">
-                  <Twitter className="w-5 h-5" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild>
@@ -104,25 +99,13 @@ export function Footer() {
             <h3 className="font-semibold text-foreground mb-4" data-testid="text-footer-projects-heading">Projeler</h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="https://vergihesabim.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground text-sm inline-flex items-center gap-1"
-                  data-testid="footer-vergihesabim"
-                >
-                  vergihesabim.com
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                <span className="text-muted-foreground text-sm" data-testid="text-project-nodelinq"><a href="https://play.google.com/store/apps/details?id=com.innovaria.wordmap" aria-label="wordduel" data-testid="link-wordduel">Word Duel: Claim the Grid (Mobil Oyun)</a></span>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm" data-testid="text-project-nodelinq">NodeLinq (Mobil Oyun)</span>
+                <span className="text-muted-foreground text-sm" data-testid="text-project-wordmap"><a href="https://play.google.com/store/apps/details?id=com.ctopsakal.echopath" aria-label="echopath" data-testid="link-echopath">EchoPath: Mind's Echo(Mobil Oyun)</a></span>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm" data-testid="text-project-wordmap">Word Duel</span>
-              </li>
-              <li>
-                <span className="text-muted-foreground text-sm" data-testid="text-project-ironfall">IronFall</span>
+                <span className="text-muted-foreground text-sm" data-testid="text-project-nodelinq">NodeLinq (Yakında)</span>
               </li>
             </ul>
           </div>
@@ -145,7 +128,7 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm" data-testid="footer-location">İstanbul, Türkiye</span>
+                <span className="text-muted-foreground text-sm" data-testid="footer-location">Ankara, Türkiye</span>
               </li>
             </ul>
           </div>

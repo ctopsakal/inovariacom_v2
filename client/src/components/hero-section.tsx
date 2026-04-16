@@ -111,7 +111,7 @@ export function HeroSection() {
                 <Code2 className="w-5 h-5 text-violet-600" />
               </div>
               <div className="text-left">
-                <p className="text-2xl font-bold text-foreground" data-testid="text-stat-projects-value">10+</p>
+                <p className="text-2xl font-bold text-foreground" data-testid="text-stat-projects-value">100+</p>
                 <p className="text-sm text-muted-foreground" data-testid="text-stat-projects-label">Tamamlanan Proje</p>
               </div>
             </div>
@@ -121,7 +121,7 @@ export function HeroSection() {
                 <Smartphone className="w-5 h-5 text-indigo-600" />
               </div>
               <div className="text-left">
-                <p className="text-2xl font-bold text-foreground" data-testid="text-stat-mobile-value">Android</p>
+                <p className="text-2xl font-bold text-foreground" data-testid="text-stat-mobile-value">React Native</p>
                 <p className="text-sm text-muted-foreground" data-testid="text-stat-mobile-label">Mobil Oyun Geliştirme</p>
               </div>
             </div>
