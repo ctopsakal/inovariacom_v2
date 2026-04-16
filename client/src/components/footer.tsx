@@ -99,10 +99,10 @@ export function Footer() {
             <h3 className="font-semibold text-foreground mb-4" data-testid="text-footer-projects-heading">Projeler</h3>
             <ul className="space-y-2">
               <li>
-                <span className="text-muted-foreground text-sm" data-testid="text-project-nodelinq"><a href="https://play.google.com/store/apps/details?id=com.innovaria.wordmap" aria-label="wordduel" data-testid="link-wordduel">Word Duel: Claim the Grid (Mobil Oyun)</a></span>
+                <span className="text-muted-foreground text-sm" data-testid="text-project-nodelinq"><a href="https://play.google.com/store/apps/details?id=com.innovaria.wordmap" target="_blank" aria-label="wordduel" data-testid="link-wordduel">Word Duel: Claim the Grid (Mobil Oyun)</a></span>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm" data-testid="text-project-wordmap"><a href="https://play.google.com/store/apps/details?id=com.ctopsakal.echopath" aria-label="echopath" data-testid="link-echopath">EchoPath: Mind's Echo(Mobil Oyun)</a></span>
+                <span className="text-muted-foreground text-sm" data-testid="text-project-wordmap"><a href="https://play.google.com/store/apps/details?id=com.ctopsakal.echopath" target="_blank" aria-label="echopath" data-testid="link-echopath">EchoPath: Mind's Echo(Mobil Oyun)</a></span>
               </li>
               <li>
                 <span className="text-muted-foreground text-sm" data-testid="text-project-nodelinq">NodeLinq (Yakında)</span>
