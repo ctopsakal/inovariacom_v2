@@ -25,31 +25,29 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
-          <Link href="/" onClick={handleLogoClick} data-testid="logo-container">
-            <img src="/logo.png" alt="i-novaria logo" className="w-12 h-12 cursor-pointer hover:opacity-80 transition" />
+          <Link href="/" onClick={handleLogoClick} data-testid="logo-container" className="inline-flex">
+            <img
+              src="/logo.png"
+              alt="i-novaria logo"
+              className="w-16 h-16 -mt-2 cursor-pointer rounded-lg opacity-100 hover:opacity-70 hover:scale-110 transition-all duration-200"
+            />
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
+            <Link href={location === "/" ? undefined : "/?section=services"}>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => location === "/" && scrollToSection("services")}
+                data-testid="nav-services"
+              >
+                Hizmetler
+              </Button>
+            </Link>
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => scrollToSection("services")}
-              data-testid="nav-services"
-            >
-              Hizmetler
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => scrollToSection("projects")}
-              data-testid="nav-projects"
-            >
-              Projeler
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => scrollToSection("contact")}
+              onClick={() => location === "/" ? scrollToSection("contact") : window.location.href = "/?section=contact"}
               data-testid="nav-contact"
             >
               İletişim
@@ -91,26 +89,30 @@ export function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden border-t border-border bg-background">
           <div className="px-4 py-4 space-y-2">
+            <Link href={location === "/" ? undefined : "/?section=services"}>
+              <Button
+                variant="ghost"
+                className="w-full justify-start"
+                onClick={() => {
+                  if (location === "/") scrollToSection("services");
+                  setIsMenuOpen(false);
+                }}
+                data-testid="nav-mobile-services"
+              >
+                Hizmetler
+              </Button>
+            </Link>
             <Button
               variant="ghost"
               className="w-full justify-start"
-              onClick={() => scrollToSection("services")}
-              data-testid="nav-mobile-services"
-            >
-              Hizmetler
-            </Button>
-            <Button
-              variant="ghost"
-              className="w-full justify-start"
-              onClick={() => scrollToSection("projects")}
-              data-testid="nav-mobile-projects"
-            >
-              Projeler
-            </Button>
-            <Button
-              variant="ghost"
-              className="w-full justify-start"
-              onClick={() => scrollToSection("contact")}
+              onClick={() => {
+                if (location === "/") {
+                  scrollToSection("contact");
+                } else {
+                  window.location.href = "/?section=contact";
+                }
+                setIsMenuOpen(false);
+              }}
               data-testid="nav-mobile-contact"
             >
               İletişim
