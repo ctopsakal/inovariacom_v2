@@ -118,11 +118,12 @@ Yazı:
   });
 
   const raw = message.content[0].type === "text" ? message.content[0].text : "";
-  console.log("🔍 Raw AI response (first 500 chars):", raw.substring(0, 500));
+  console.log("🔍 Raw AI response length:", raw.length);
+  console.log("🔍 Raw AI response:\n", raw);
 
   const titleMatch = raw.match(/BASLIK:\s*(.+?)(?:\n|$)/i);
   const excerptMatch = raw.match(/OZET:\s*(.+?)(?:\n|$)/i);
-  const contentMatch = raw.match(/ICERIK:\s*([\s\S]+?)(?:\n{2,}|$)/i);
+  const contentMatch = raw.match(/ICERIK:\s*([\s\S]+)$/i);  // Değiştirildi: sonuna kadar tüm içeriği al
 
   console.log("📋 Parsed values:", {
     title: titleMatch?.[1]?.substring(0, 50),
