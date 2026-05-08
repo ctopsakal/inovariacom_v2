@@ -118,8 +118,8 @@ export function ContactSection() {
             className="text-lg text-muted-foreground max-w-2xl mx-auto"
             data-testid="text-contact-description"
           >
-            Yeni bir proje mi var? Mevcut sisteminizi geliştirmek mi istiyorsunuz? 
-            Hızlıca iletişime geçin, birlikte değerlendirelim.
+            Yeni projeler mi var? Mevcut sistemlerinizi geliştirmek mi istiyorsunuz?
+            Hızlıca iletişime geçin, birlikte değerlendirelim ve harekete geçelim.
           </motion.p>
         </div>
 

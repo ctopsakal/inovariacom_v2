@@ -59,7 +59,7 @@ export function HeroSection() {
               Dijital Ürünlere
             </span>
             <br />
-            Dönüştürüyorum
+            Dönüştürüyoruz
           </motion.h1>
 
           <motion.p
@@ -70,7 +70,7 @@ export function HeroSection() {
             data-testid="text-hero-description"
           >
             i-novaria olarak <strong>web sitesi, e-ticaret, mobil oyun ve dijital dönüşüm danışmanlığı</strong> alanlarında
-            uçtan uca çözümler sunuyorum. Vibe coding yaklaşımıyla hızlı, modern ve etkili ürünler geliştiriyorum.
+            uçtan uca çözümler sunuyoruz. Vibe coding yaklaşımıyla hızlı, modern ve etkili ürünler geliştiriyoruz.
           </motion.p>
 
           <motion.div

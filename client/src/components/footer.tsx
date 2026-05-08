@@ -27,8 +27,8 @@ export function Footer() {
               <span className="text-xl font-bold text-foreground">i-novaria</span>
             </div>
             <p className="text-muted-foreground text-sm mb-4" data-testid="text-footer-description">
-              Vibe coding, web sitesi tasarımı, e-ticaret ve mobil oyun geliştirme alanlarında 
-              freelance yazılım & dijital çözümler sunuyorum.
+              Vibe coding, web sitesi tasarımı, e-ticaret ve mobil oyun geliştirme alanlarında
+              freelance yazılım & dijital çözümler sunuyoruz.
             </p>
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="icon" asChild>

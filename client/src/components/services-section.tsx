@@ -18,7 +18,7 @@ const services = [
     icon: Sparkles,
     title: "Vibe Coding",
     badge: "Yeni Nesil Geliştirme",
-    description: "AI destekli, akış halinde kod yazma yaklaşımıyla projelerinizi olağanüstü hızda hayata geçiriyorum. Fikirden ürüne geçişi radikal biçimde hızlandırıyorum.",
+    description: "AI destekli, akış halinde kod yazma yaklaşımıyla projelerinizi olağanüstü hızda hayata geçiriyoruz. Fikirden ürüne geçişi radikal biçimde hızlandırıyoruz.",
     benefits: [
       "AI-assisted geliştirme süreci",
       "Rapid prototyping & iterasyon",
@@ -32,7 +32,7 @@ const services = [
     icon: TrendingUp,
     title: "Dijital Dönüşüm Danışmanlığı",
     badge: "Strateji & Uygulama",
-    description: "İşletmenizin dijitalleşme yolculuğunu baştan sona planlıyor ve uyguluyorum. Süreç otomasyonundan dijital altyapı kurulumuna kadar kapsamlı danışmanlık.",
+    description: "İşletmenizin dijitalleşme yolculuğunu baştan sona planlıyor ve uyguluyoruz. Süreç otomasyonundan dijital altyapı kurulumuna kadar kapsamlı danışmanlık.",
     benefits: [
       "Dijital altyapı analizi",
       "Süreç otomasyonu (n8n, Zapier)",
@@ -46,7 +46,7 @@ const services = [
     icon: Globe,
     title: "Web Sitesi Tasarımı",
     badge: "Modern & Hızlı",
-    description: "Markanızı yansıtan, dönüşüm odaklı web siteleri tasarlıyor ve geliştiriyorum. Performans, SEO ve kullanıcı deneyimi ön planda.",
+    description: "Markanızı yansıtan, dönüşüm odaklı web siteleri tasarlıyor ve geliştiriyoruz. Performans, SEO ve kullanıcı deneyimi ön planda.",
     benefits: [
       "Responsive & mobil uyumlu tasarım",
       "SEO optimizasyonu",
@@ -60,7 +60,7 @@ const services = [
     icon: ShoppingCart,
     title: "E-Ticaret Sistemi",
     badge: "Kurulum & Yönetim",
-    description: "Türkiye pazarına uygun, ödeme sistemleri entegre edilmiş e-ticaret çözümleri kuruyorum. Kurulum sonrası yönetim desteği de sunuyorum.",
+    description: "Türkiye pazarına uygun, ödeme sistemleri entegre edilmiş e-ticaret çözümleri kuruyoruz. Kurulum sonrası yönetim desteği de sunuyoruz.",
     benefits: [
       "iyzico, PayTR ödeme entegrasyonu",
       "Stok & sipariş yönetimi",
@@ -74,7 +74,7 @@ const services = [
     icon: Smartphone,
     title: "Mobil Oyun Geliştirme",
     badge: "Android · iOS Yakında",
-    description: "React Native & Expo ile Android platformu için mobil oyunlar geliştiriyorum. Google Play Store yayın süreçlerini uçtan uca yönetiyorum.",
+    description: "React Native & Expo ile Android platformu için mobil oyunlar geliştiriyoruz. Google Play Store yayın süreçlerini uçtan uca yönetiyoruz.",
     benefits: [
       "React Native / Expo",
       "Google Play Store yayını",
