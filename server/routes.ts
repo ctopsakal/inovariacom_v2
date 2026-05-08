@@ -235,28 +235,39 @@ export async function registerRoutes(
     try {
       console.log("🤖 AI blog post üretimi başladı...");
       const generated = await generateBlogPost();
+      console.log("📝 AI yanıtı:", { title: generated.title, excerptLength: generated.excerpt.length, contentLength: generated.content.length });
 
       let slug = generateSlug(generated.title);
+      console.log("🔗 Generated slug:", slug);
+
       const existing = await storage.getBlogPostBySlug(slug);
       if (existing) {
         slug = `${slug}-${Date.now()}`;
+        console.log("⚠️  Slug conflict, using:", slug);
       }
 
-      const post = await storage.createBlogPost({
+      const postData = {
         title: generated.title,
         slug,
         content: generated.content,
         excerpt: generated.excerpt,
         published: true,
-      });
+      };
+      console.log("💾 Attempting to save:", { title: postData.title, slug: postData.slug });
 
-      console.log(`✅ Blog post oluşturuldu: ${post.title} (${post.slug})`);
+      const post = await storage.createBlogPost(postData);
+      console.log(`✅ Blog post oluşturuldu: ${post.title} (${post.slug}) - ID: ${post.id}`);
+
       await sendBlogTelegramNotification(post);
 
       res.json({ success: true, post });
     } catch (error) {
       console.error("❌ Blog post üretimi hatası:", error);
-      res.status(500).json({ success: false, error: "Post generation failed" });
+      if (error instanceof Error) {
+        console.error("   Message:", error.message);
+        console.error("   Stack:", error.stack);
+      }
+      res.status(500).json({ success: false, error: "Post generation failed", details: error instanceof Error ? error.message : String(error) });
     }
   });
 
