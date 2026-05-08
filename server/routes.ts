@@ -231,6 +231,13 @@ export async function registerRoutes(
   app.post("/api/cron/generate-post", async (req, res) => {
     const secret = req.headers["x-cron-secret"] || req.body?.secret;
 
+    console.log("🔐 CRON validation:", {
+      secretConfigured: !!CRON_SECRET,
+      secretLength: CRON_SECRET?.length,
+      receivedLength: secret?.length,
+      match: secret === CRON_SECRET
+    });
+
     if (!CRON_SECRET || secret !== CRON_SECRET) {
       return res.status(401).json({ success: false, error: "Unauthorized" });
     }
