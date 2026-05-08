@@ -85,13 +85,13 @@ async function generateBlogPost(): Promise<{ title: string; content: string; exc
 
   const topics = [
     "vibe coding ve AI destekli yazılım geliştirme",
-    "2024-2025 yapay zeka trendleri ve freelance yazılımcı",
-    "Claude, GPT ve diğer LLM'lerle proje geliştirme",
-    "React ve modern frontend development trendleri",
-    "Otomatize yazılım geliştirmede prompt engineering",
-    "Vibecoding ile hızlı prototipleme",
-    "AI copilot araçları ve produktivite",
-    "Doğal dil ile kod yazma geleceği",
+    "2026 yapay zeka trendleri ve freelance yazılımcının geleceği",
+    "Claude 4, OpenAI o1 ve en yeni LLM'ler ile proje geliştirme",
+    "React 19+ ve modern fullstack development en son pratikleri",
+    "Prompt engineering ile yapay zeka model optimizasyonu",
+    "Vibecoding ile hızlı prototipleme ve agile geliştirme",
+    "AI agentic workflows ve autonomous systems",
+    "Kurumsal yazılım geliştirmede AI'nın yeri",
   ];
   const topic = topics[Math.floor(Math.random() * topics.length)];
 
