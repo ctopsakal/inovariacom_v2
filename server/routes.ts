@@ -12,8 +12,19 @@ const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 let bot: Telegraf | null = null;
 
+console.log("🤖 Telegram Configuration:");
+console.log("   Token configured:", !!TELEGRAM_BOT_TOKEN);
+console.log("   Chat ID configured:", !!TELEGRAM_CHAT_ID);
+
 if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
-  bot = new Telegraf(TELEGRAM_BOT_TOKEN);
+  try {
+    bot = new Telegraf(TELEGRAM_BOT_TOKEN);
+    console.log("✅ Telegram bot initialized successfully");
+  } catch (error) {
+    console.error("❌ Failed to initialize Telegram bot:", error);
+  }
+} else {
+  console.warn("⚠️  Telegram bot not configured - messages won't be sent to Telegram");
 }
 
 function formatTelegramMessage(msg: ContactMessage): string {
@@ -53,16 +64,21 @@ function getSubjectLabel(subject: string): string {
 
 async function sendTelegramMessage(msg: ContactMessage) {
   if (!bot || !TELEGRAM_CHAT_ID) {
-    console.warn("Telegram bot not configured");
+    console.warn("⚠️  Telegram bot not configured - skipping message send");
     return;
   }
 
   try {
-    await bot.telegram.sendMessage(TELEGRAM_CHAT_ID, formatTelegramMessage(msg), {
+    console.log("🔗 Connecting to Telegram API with chat ID:", TELEGRAM_CHAT_ID);
+    const result = await bot.telegram.sendMessage(TELEGRAM_CHAT_ID, formatTelegramMessage(msg), {
       parse_mode: "HTML",
     });
+    console.log("✅ Telegram message sent successfully, message ID:", result.message_id);
   } catch (error) {
-    console.error("Failed to send Telegram message:", error);
+    console.error("❌ Failed to send Telegram message:", error);
+    if (error instanceof Error) {
+      console.error("   Error details:", error.message);
+    }
   }
 }
 
@@ -73,14 +89,19 @@ export async function registerRoutes(
 
   app.post("/api/contact", async (req, res) => {
     try {
+      console.log("📨 Contact form received:", req.body.name, req.body.email);
       const validatedData = insertContactMessageSchema.parse(req.body);
       const message = await storage.createContactMessage(validatedData);
+      console.log("💾 Message saved to database with ID:", message.id);
 
       // Send to Telegram
+      console.log("📤 Sending to Telegram...");
       await sendTelegramMessage(message);
+      console.log("✅ Telegram message sent successfully");
 
       res.json({ success: true, message });
     } catch (error) {
+      console.error("❌ Error in contact endpoint:", error);
       if (error instanceof z.ZodError) {
         res.status(400).json({ success: false, errors: error.errors });
       } else {
