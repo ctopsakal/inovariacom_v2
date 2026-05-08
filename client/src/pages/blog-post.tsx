@@ -82,15 +82,15 @@ export default function BlogPostPage() {
             </div>
           </header>
 
-          <div className="prose prose-invert max-w-none mb-8">
+          <div className="max-w-none mb-8">
             <ReactMarkdown
               components={{
-                h2: ({ node, ...props }) => <h2 className="text-2xl font-semibold mt-8 mb-4 text-foreground" {...props} />,
-                h3: ({ node, ...props }) => <h3 className="text-xl font-semibold mt-6 mb-3 text-foreground" {...props} />,
-                p: ({ node, ...props }) => <p className="mb-4 text-foreground leading-relaxed" {...props} />,
-                ul: ({ node, ...props }) => <ul className="list-disc list-inside mb-4 text-foreground space-y-2" {...props} />,
-                ol: ({ node, ...props }) => <ol className="list-decimal list-inside mb-4 text-foreground space-y-2" {...props} />,
-                li: ({ node, ...props }) => <li className="mb-2 text-foreground" {...props} />,
+                h2: ({ node, ...props }) => <h2 className="text-2xl font-semibold mt-8 mb-4 !text-foreground" {...props} />,
+                h3: ({ node, ...props }) => <h3 className="text-xl font-semibold mt-6 mb-3 !text-foreground" {...props} />,
+                p: ({ node, ...props }) => <p className="mb-4 !text-foreground leading-relaxed" {...props} />,
+                ul: ({ node, ...props }) => <ul className="list-disc list-inside mb-4 !text-foreground space-y-2" {...props} />,
+                ol: ({ node, ...props }) => <ol className="list-decimal list-inside mb-4 !text-foreground space-y-2" {...props} />,
+                li: ({ node, ...props }) => <li className="mb-2 !text-foreground" {...props} />,
                 table: ({ node, ...props }) => <table className="w-full border-collapse border border-muted my-4" {...props} />,
                 th: ({ node, ...props }) => <th className="border border-muted p-2 bg-muted text-foreground text-left" {...props} />,
                 td: ({ node, ...props }) => <td className="border border-muted p-2 text-foreground" {...props} />,
