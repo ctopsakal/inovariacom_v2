@@ -66,12 +66,14 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-2">
-            <Button
-              onClick={() => scrollToSection("contact")}
-              data-testid="nav-cta"
-            >
-              Proje Konuşalım
-            </Button>
+            <Link href={location === "/" ? undefined : "/?section=contact"}>
+              <Button
+                onClick={() => location === "/" && scrollToSection("contact")}
+                data-testid="nav-cta"
+              >
+                Proje Konuşalım
+              </Button>
+            </Link>
           </div>
 
           <Button
@@ -123,13 +125,18 @@ export function Navbar() {
                 Blog
               </Button>
             </Link>
-            <Button
-              className="w-full mt-4"
-              onClick={() => scrollToSection("contact")}
-              data-testid="nav-mobile-cta"
-            >
-              Proje Konuşalım
-            </Button>
+            <Link href={location === "/" ? undefined : "/?section=contact"} className="w-full">
+              <Button
+                className="w-full mt-4"
+                onClick={() => {
+                  if (location === "/") scrollToSection("contact");
+                  setIsMenuOpen(false);
+                }}
+                data-testid="nav-mobile-cta"
+              >
+                Proje Konuşalım
+              </Button>
+            </Link>
           </div>
         </div>
       )}
