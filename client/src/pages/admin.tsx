@@ -1,23 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Mail, 
-  Phone, 
-  Building2, 
-  Calendar, 
+import {
+  Mail,
+  Phone,
+  Building2,
+  Calendar,
   MessageSquare,
   Lock,
   ArrowLeft,
   Inbox,
-  Loader2
+  Loader2,
+  Send
 } from "lucide-react";
 import type { ContactMessage } from "@shared/schema";
 
 export default function AdminPage() {
+  const [isAdminDisabled] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authToken, setAuthToken] = useState("");
   const [password, setPassword] = useState("");
@@ -94,6 +96,40 @@ export default function AdminPage() {
     return colors[subject] || "bg-gray-500/10 text-gray-600";
   };
 
+  if (isAdminDisabled) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <Card className="w-full max-w-md">
+          <CardHeader className="text-center">
+            <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mx-auto mb-4">
+              <Send className="w-6 h-6 text-blue-600" />
+            </div>
+            <CardTitle>Admin Paneli Devre Dışı</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <p className="text-sm text-muted-foreground">
+                İletişim talepleri artık Telegram botu aracılığıyla doğrudan sizin Telegram hesabınıza gönderilmektedir.
+              </p>
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                <p className="text-sm text-blue-700 font-medium">📱 Telegram Bot Aktif</p>
+                <p className="text-xs text-blue-600 mt-2">
+                  Yeni mesajları Telegram'da alacaksınız.
+                </p>
+              </div>
+            </div>
+            <div className="mt-6 text-center">
+              <a href="/" className="text-sm text-muted-foreground inline-flex items-center gap-1 hover:text-foreground transition">
+                <ArrowLeft className="w-4 h-4" />
+                Ana Sayfaya Dön
+              </a>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
@@ -118,9 +154,9 @@ export default function AdminPage() {
                   <p className="text-sm text-destructive mt-2">{error}</p>
                 )}
               </div>
-              <Button 
-                type="submit" 
-                className="w-full" 
+              <Button
+                type="submit"
+                className="w-full"
                 disabled={loginMutation.isPending}
                 data-testid="button-admin-login"
               >
