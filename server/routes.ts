@@ -118,13 +118,20 @@ Yazı:
   });
 
   const raw = message.content[0].type === "text" ? message.content[0].text : "";
+  console.log("🔍 Raw AI response (first 500 chars):", raw.substring(0, 500));
 
-  const titleMatch = raw.match(/BASLIK:\s*(.+)/);
-  const excerptMatch = raw.match(/OZET:\s*(.+)/);
-  const contentMatch = raw.match(/ICERIK:\s*([\s\S]+)/);
+  const titleMatch = raw.match(/BASLIK:\s*(.+?)(?:\n|$)/i);
+  const excerptMatch = raw.match(/OZET:\s*(.+?)(?:\n|$)/i);
+  const contentMatch = raw.match(/ICERIK:\s*([\s\S]+?)(?:\n{2,}|$)/i);
+
+  console.log("📋 Parsed values:", {
+    title: titleMatch?.[1]?.substring(0, 50),
+    excerpt: excerptMatch?.[1]?.substring(0, 50),
+    contentLength: contentMatch?.[1]?.length || 0
+  });
 
   if (!titleMatch || !excerptMatch || !contentMatch) {
-    throw new Error("AI response format geçersiz");
+    throw new Error(`AI response format geçersiz. Title: ${!!titleMatch}, Excerpt: ${!!excerptMatch}, Content: ${!!contentMatch}`);
   }
 
   return {
