@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [location] = useLocation();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -47,6 +49,15 @@ export function Navbar() {
             >
               İletişim
             </Button>
+            <Link href="/blog">
+              <Button
+                variant={location.startsWith("/blog") ? "secondary" : "ghost"}
+                size="sm"
+                data-testid="nav-blog"
+              >
+                Blog
+              </Button>
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center gap-2">
@@ -97,6 +108,16 @@ export function Navbar() {
             >
               İletişim
             </Button>
+            <Link href="/blog">
+              <Button
+                variant="ghost"
+                className="w-full justify-start"
+                onClick={() => setIsMenuOpen(false)}
+                data-testid="nav-mobile-blog"
+              >
+                Blog
+              </Button>
+            </Link>
             <Button
               className="w-full mt-4"
               onClick={() => scrollToSection("contact")}

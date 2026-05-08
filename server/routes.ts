@@ -4,17 +4,23 @@ import { storage } from "./storage";
 import { insertContactMessageSchema } from "@shared/schema";
 import { z } from "zod";
 import { Telegraf } from "telegraf";
-import type { ContactMessage } from "@shared/schema";
+import Anthropic from "@anthropic-ai/sdk";
+import type { ContactMessage, BlogPost } from "@shared/schema";
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "inovaria2026";
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+const CRON_SECRET = process.env.CRON_SECRET;
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
 let bot: Telegraf | null = null;
 
 console.log("🤖 Telegram Configuration:");
 console.log("   Token configured:", !!TELEGRAM_BOT_TOKEN);
 console.log("   Chat ID configured:", !!TELEGRAM_CHAT_ID);
+console.log("🤖 Blog Configuration:");
+console.log("   ANTHROPIC_API_KEY configured:", !!ANTHROPIC_API_KEY);
+console.log("   CRON_SECRET configured:", !!CRON_SECRET);
 
 if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
   try {
@@ -62,6 +68,87 @@ function getSubjectLabel(subject: string): string {
   return labels[subject] || subject;
 }
 
+function generateSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .substring(0, 80);
+}
+
+async function generateBlogPost(): Promise<{ title: string; content: string; excerpt: string }> {
+  const client = new Anthropic({ apiKey: ANTHROPIC_API_KEY });
+
+  const topics = [
+    "vibe coding ve AI destekli yazılım geliştirme",
+    "2024-2025 yapay zeka trendleri ve freelance yazılımcı",
+    "Claude, GPT ve diğer LLM'lerle proje geliştirme",
+    "React ve modern frontend development trendleri",
+    "Otomatize yazılım geliştirmede prompt engineering",
+    "Vibecoding ile hızlı prototipleme",
+    "AI copilot araçları ve produktivite",
+    "Doğal dil ile kod yazma geleceği",
+  ];
+  const topic = topics[Math.floor(Math.random() * topics.length)];
+
+  const message = await client.messages.create({
+    model: "claude-haiku-4-5-20251001",
+    max_tokens: 2000,
+    messages: [
+      {
+        role: "user",
+        content: `Bir teknoloji blogu için "${topic}" hakkında Türkçe bir blog yazısı yaz.
+
+Format:
+BASLIK: [Dikkat çekici, SEO dostu başlık]
+OZET: [1-2 cümle özet, max 200 karakter]
+ICERIK:
+[Markdown formatında, ## alt başlıklar ile bölünmüş, 600-900 kelime]
+
+Yazı:
+- i-novaria (freelance vibe coding & dijital çözümler) perspektifinden olsun
+- Pratik, bilgilendirici ve profesyonel ton
+- Okuyucu için somut değer sunmalı`,
+      },
+    ],
+  });
+
+  const raw = message.content[0].type === "text" ? message.content[0].text : "";
+
+  const titleMatch = raw.match(/BASLIK:\s*(.+)/);
+  const excerptMatch = raw.match(/OZET:\s*(.+)/);
+  const contentMatch = raw.match(/ICERIK:\s*([\s\S]+)/);
+
+  if (!titleMatch || !excerptMatch || !contentMatch) {
+    throw new Error("AI response format geçersiz");
+  }
+
+  return {
+    title: titleMatch[1].trim(),
+    excerpt: excerptMatch[1].trim(),
+    content: contentMatch[1].trim(),
+  };
+}
+
+async function sendBlogTelegramNotification(post: BlogPost) {
+  if (!bot || !TELEGRAM_CHAT_ID) return;
+  const text = `📝 <b>Yeni Blog Yazısı Yayınlandı!</b>\n\n`
+    + `<b>Başlık:</b> ${escapeHtml(post.title)}\n`
+    + `<b>Özet:</b> ${escapeHtml(post.excerpt)}\n`
+    + `<b>Tarih:</b> ${new Date(post.createdAt).toLocaleString("tr-TR")}\n\n`
+    + `<a href="https://i-novaria.com/blog/${post.slug}">Yazıyı Oku</a>`;
+
+  try {
+    await bot.telegram.sendMessage(TELEGRAM_CHAT_ID, text, { parse_mode: "HTML" });
+  } catch (error) {
+    console.error("❌ Blog Telegram bildirimi gönderilemedi:", error);
+  }
+}
+
 async function sendTelegramMessage(msg: ContactMessage) {
   if (!bot || !TELEGRAM_CHAT_ID) {
     console.warn("⚠️  Telegram bot not configured - skipping message send");
@@ -107,6 +194,69 @@ export async function registerRoutes(
       } else {
         res.status(500).json({ success: false, error: "Internal server error" });
       }
+    }
+  });
+
+  app.get("/api/blog", async (req, res) => {
+    try {
+      const posts = await storage.getBlogPosts();
+      res.json({ success: true, posts });
+    } catch (error) {
+      console.error("❌ Error fetching blog posts:", error);
+      res.status(500).json({ success: false, error: "Internal server error" });
+    }
+  });
+
+  app.get("/api/blog/:slug", async (req, res) => {
+    try {
+      const post = await storage.getBlogPostBySlug(req.params.slug);
+      if (!post) {
+        return res.status(404).json({ success: false, error: "Post not found" });
+      }
+      storage.incrementViewCount(post.id).catch(console.error);
+      res.json({ success: true, post });
+    } catch (error) {
+      console.error("❌ Error fetching blog post:", error);
+      res.status(500).json({ success: false, error: "Internal server error" });
+    }
+  });
+
+  app.post("/api/cron/generate-post", async (req, res) => {
+    const secret = req.headers["x-cron-secret"] || req.body?.secret;
+
+    if (!CRON_SECRET || secret !== CRON_SECRET) {
+      return res.status(401).json({ success: false, error: "Unauthorized" });
+    }
+
+    if (!ANTHROPIC_API_KEY) {
+      return res.status(500).json({ success: false, error: "ANTHROPIC_API_KEY not configured" });
+    }
+
+    try {
+      console.log("🤖 AI blog post üretimi başladı...");
+      const generated = await generateBlogPost();
+
+      let slug = generateSlug(generated.title);
+      const existing = await storage.getBlogPostBySlug(slug);
+      if (existing) {
+        slug = `${slug}-${Date.now()}`;
+      }
+
+      const post = await storage.createBlogPost({
+        title: generated.title,
+        slug,
+        content: generated.content,
+        excerpt: generated.excerpt,
+        published: true,
+      });
+
+      console.log(`✅ Blog post oluşturuldu: ${post.title} (${post.slug})`);
+      await sendBlogTelegramNotification(post);
+
+      res.json({ success: true, post });
+    } catch (error) {
+      console.error("❌ Blog post üretimi hatası:", error);
+      res.status(500).json({ success: false, error: "Post generation failed" });
     }
   });
 
