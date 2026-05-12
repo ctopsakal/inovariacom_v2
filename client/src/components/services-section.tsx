@@ -18,9 +18,9 @@ const services = [
     icon: Sparkles,
     title: "Vibe Coding",
     badge: "Yeni Nesil Geliştirme",
-    description: "AI destekli, akış halinde kod yazma yaklaşımıyla projelerinizi olağanüstü hızda hayata geçiriyoruz. Fikirden ürüne geçişi radikal biçimde hızlandırıyoruz.",
+    description: "Claude AI, Gemini ve GPT-4o'yu geliştirme sürecine tam entegre ederek projelerinizi olağanüstü hızda hayata geçiriyoruz. Fikirden ürüne geçişi 3-5x hızlandırıyoruz.",
     benefits: [
-      "AI-assisted geliştirme süreci",
+      "Claude AI & GPT-4o ile assisted geliştirme",
       "Rapid prototyping & iterasyon",
       "React Native, Next.js, Node.js",
       "Temiz, sürdürülebilir kod mimarisi"
@@ -31,13 +31,13 @@ const services = [
   {
     icon: TrendingUp,
     title: "Dijital Dönüşüm Danışmanlığı",
-    badge: "Strateji & Uygulama",
-    description: "İşletmenizin dijitalleşme yolculuğunu baştan sona planlıyor ve uyguluyoruz. Süreç otomasyonundan dijital altyapı kurulumuna kadar kapsamlı danışmanlık.",
+    badge: "AI & Otomasyon",
+    description: "n8n, Claude AI, Gemini API ve OpenAI API ile işletmenizin tekrar eden süreçlerini otomatize ediyoruz. CRM, e-posta, belge işleme ve veri analitiğinden dijital altyapı kurulumuna kapsamlı çözümler.",
     benefits: [
-      "Dijital altyapı analizi",
-      "Süreç otomasyonu (n8n, Zapier)",
-      "Teknik strateji danışmanlığı",
-      "Uygulama ve takip desteği"
+      "CRM ve satış süreci otomasyonu",
+      "n8n workflow tasarımı & kurulumu",
+      "Claude AI & OpenAI API entegrasyonu",
+      "Telegram & Slack bot entegrasyonları"
     ],
     color: "indigo",
     highlight: false

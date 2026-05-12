@@ -47,6 +47,14 @@ export function Navbar() {
             <Button
               variant="ghost"
               size="sm"
+              onClick={() => location === "/" ? scrollToSection("about") : window.location.href = "/?section=about"}
+              data-testid="nav-about"
+            >
+              Hakkımızda
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={() => location === "/" ? scrollToSection("contact") : window.location.href = "/?section=contact"}
               data-testid="nav-contact"
             >
@@ -102,6 +110,21 @@ export function Navbar() {
                 Hizmetler
               </Button>
             </Link>
+            <Button
+              variant="ghost"
+              className="w-full justify-start"
+              onClick={() => {
+                if (location === "/") {
+                  scrollToSection("about");
+                } else {
+                  window.location.href = "/?section=about";
+                }
+                setIsMenuOpen(false);
+              }}
+              data-testid="nav-mobile-about"
+            >
+              Hakkımızda
+            </Button>
             <Button
               variant="ghost"
               className="w-full justify-start"

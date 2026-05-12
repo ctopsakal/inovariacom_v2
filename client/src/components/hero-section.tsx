@@ -38,7 +38,7 @@ export function HeroSection() {
           >
             <Badge variant="secondary" className="px-4 py-2 text-sm font-medium" data-testid="badge-hero">
               <Code2 className="w-4 h-4 mr-2" />
-              Freelance Yazılım & Dijital Çözümler
+              AI Otomasyon & Dijital Dönüşüm
             </Badge>
             <Badge className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-violet-600 to-indigo-600 text-white border-0" data-testid="badge-vibe">
               <Sparkles className="w-4 h-4 mr-2" />
@@ -69,8 +69,8 @@ export function HeroSection() {
             className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8"
             data-testid="text-hero-description"
           >
-            i-novaria olarak <strong>web sitesi, e-ticaret, mobil oyun ve dijital dönüşüm danışmanlığı</strong> alanlarında
-            uçtan uca çözümler sunuyoruz. Vibe coding yaklaşımıyla hızlı, modern ve etkili ürünler geliştiriyoruz.
+            i-novaria olarak <strong>n8n, Claude AI, Gemini API ve OpenAI API</strong> ile uçtan uca AI otomasyon sistemleri geliştiriyoruz.
+            Vibe Coding yaklaşımıyla web, e-ticaret ve mobil projelerinizi radikal biçimde hızlandırıyoruz.
           </motion.p>
 
           <motion.div
