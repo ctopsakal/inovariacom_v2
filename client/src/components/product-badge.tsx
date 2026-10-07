@@ -14,13 +14,7 @@ export function ProductBadgeBody({ product }: { product: Product }) {
       <span className="badge-slot" aria-hidden />
       <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
         <div className="flex items-center gap-3">
-          {product.logo ? (
-            <img src={product.logo} alt="" className="h-14 w-14 rounded-xl bg-ground object-contain p-1.5" />
-          ) : (
-            <span className="font-display grid h-14 w-14 place-items-center rounded-xl bg-brand-soft text-2xl text-brand">
-              {product.initial}
-            </span>
-          )}
+          <ProductLogo product={product} className="h-14 w-14" />
           <div className="min-w-0">
             <p className="text-xs font-medium uppercase tracking-wider text-faint">{product.kind}</p>
             <p className="font-display truncate text-2xl leading-tight text-ink">{product.name}</p>
@@ -43,6 +37,18 @@ export function ProductBadgeBody({ product }: { product: Product }) {
         </span>
       </div>
     </>
+  );
+}
+
+export function ProductLogo({ product, className = "" }: { product: Product; className?: string }) {
+  return (
+    <img
+      src={product.logo}
+      alt=""
+      width={56}
+      height={56}
+      className={`${className} shrink-0 rounded-xl ${product.logoBleed ? "object-cover" : "bg-ground object-contain p-1.5"}`}
+    />
   );
 }
 

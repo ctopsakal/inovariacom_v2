@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://i-novaria.com/sitemap.xml

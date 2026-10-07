@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { registerSeoRoutes } from "./seo";
 import { insertContactMessageSchema } from "@shared/schema";
 import { z } from "zod";
 import { Telegraf } from "telegraf";
@@ -181,6 +182,7 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  registerSeoRoutes(app);
 
   app.post("/api/contact", async (req, res) => {
     try {
@@ -221,11 +223,22 @@ export async function registerRoutes(
       if (!post) {
         return res.status(404).json({ success: false, error: "Post not found" });
       }
-      storage.incrementViewCount(post.id).catch(console.error);
       res.json({ success: true, post });
     } catch (error) {
       console.error("❌ Error fetching blog post:", error);
       res.status(500).json({ success: false, error: "Internal server error" });
+    }
+  });
+
+  // Counted by the browser after the page shows, so server rendering and crawlers don't inflate it.
+  app.post("/api/blog/:slug/view", async (req, res) => {
+    try {
+      const post = await storage.getBlogPostBySlug(req.params.slug);
+      if (post) await storage.incrementViewCount(post.id);
+      res.status(204).end();
+    } catch (error) {
+      console.error("❌ Error counting blog view:", error);
+      res.status(500).end();
     }
   });
 

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { Navbar } from "@/components/navbar";
@@ -10,6 +11,10 @@ export default function BlogPage() {
   const { data, isLoading, isError } = useQuery<{ success: boolean; posts: BlogPost[] }>({
     queryKey: ["/api/blog"],
   });
+
+  useEffect(() => {
+    document.title = "Blog | i-novaria";
+  }, []);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">

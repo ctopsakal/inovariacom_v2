@@ -6,8 +6,9 @@ export type Product = {
   url: string;
   host: string;
   tags: string[];
-  logo?: string;
-  initial?: string;
+  logo: string;
+  // App-store icons are full-bleed squares; the Konuşmacım logo needs padding on a tile.
+  logoBleed?: boolean;
   // "spot" uses Konuşmacım's own stage-light yellow on its card.
   tone: "spot" | "brand" | "plain";
 };
@@ -31,7 +32,8 @@ export const GAMES: Product[] = [
     url: "https://play.google.com/store/apps/details?id=com.innovaria.wordmap",
     host: "Google Play",
     tags: ["React Native", "Gerçek zamanlı"],
-    initial: "W",
+    logo: "/wordduel-icon.png",
+    logoBleed: true,
     tone: "brand",
   },
   {
@@ -41,7 +43,8 @@ export const GAMES: Product[] = [
     url: "https://play.google.com/store/apps/details?id=com.ctopsakal.echopath",
     host: "Google Play",
     tags: ["React Native", "Günlük bulmaca"],
-    initial: "E",
+    logo: "/echopath-icon.png",
+    logoBleed: true,
     tone: "plain",
   },
 ];

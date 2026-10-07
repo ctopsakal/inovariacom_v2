@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useRoute, Link } from "wouter";
 import { Navbar } from "@/components/navbar";
@@ -17,6 +18,15 @@ export default function BlogPostPage() {
   });
 
   const post = data?.post;
+
+  useEffect(() => {
+    if (!slug) return;
+    fetch(`/api/blog/${encodeURIComponent(slug)}/view`, { method: "POST" }).catch(() => {});
+  }, [slug]);
+
+  useEffect(() => {
+    if (post) document.title = `${post.title} | i-novaria Blog`;
+  }, [post]);
 
   if (isLoading) {
     return (

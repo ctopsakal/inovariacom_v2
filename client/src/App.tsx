@@ -1,6 +1,5 @@
-import { Switch, Route } from "wouter";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
+import { Switch, Route, Router } from "wouter";
+import { QueryClientProvider, type QueryClient } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
@@ -9,7 +8,7 @@ import BlogPage from "@/pages/blog";
 import BlogPostPage from "@/pages/blog-post";
 import NotFound from "@/pages/not-found";
 
-function Router() {
+function Routes() {
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -21,12 +20,15 @@ function Router() {
   );
 }
 
-function App() {
+/** `ssrPath` is set only when the server renders the page (see entry-server.tsx). */
+function App({ queryClient, ssrPath }: { queryClient: QueryClient; ssrPath?: string }) {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <Router />
+        <Router ssrPath={ssrPath}>
+          <Routes />
+        </Router>
       </TooltipProvider>
     </QueryClientProvider>
   );

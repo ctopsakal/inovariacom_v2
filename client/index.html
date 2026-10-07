@@ -2,20 +2,23 @@
 <html lang="tr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--page-head:start (server/static.ts replaces this block on every page except the home page) -->
     <title>i-novaria | AI Otomasyon & Dijital Dönüşüm Danışmanlığı</title>
     <meta name="description" content="i-novaria — Ankara merkezli AI otomasyon danışmanlık firması. n8n, Gemini API ve OpenAI API ile CRM, e-posta, belge ve veri analitik otomasyonları. Web sitesi, e-ticaret ve mobil oyun geliştirme. Konuşmacım'ın geliştiricisi." />
     <meta name="keywords" content="n8n otomasyon, AI otomasyon, Gemini API, OpenAI API, CRM otomasyonu, e-posta otomasyonu, belge otomasyonu, iş süreçleri otomasyonu, dijital dönüşüm, vibe coding, web sitesi tasarımı, e-ticaret sistemi, mobil oyun geliştirme, Ankara, Türkiye" />
     <meta name="author" content="i-novaria" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://i-novaria.com" />
+    <link rel="canonical" href="https://www.i-novaria.com/" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://i-novaria.com" />
+    <meta property="og:url" content="https://www.i-novaria.com/" />
     <meta property="og:title" content="i-novaria | AI Otomasyon & Dijital Dönüşüm Danışmanlığı" />
     <meta property="og:description" content="Ankara merkezli AI otomasyon danışmanlık firması. n8n, Gemini API ve OpenAI API ile CRM, e-posta, belge ve veri analitik otomasyonları. Web sitesi, e-ticaret ve mobil oyun geliştirme." />
-    <meta property="og:image" content="/logo.png" />
+    <meta property="og:image" content="https://www.i-novaria.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="tr_TR" />
     <meta property="og:site_name" content="i-novaria" />
     
@@ -23,181 +26,208 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="i-novaria | AI Otomasyon & Dijital Dönüşüm Danışmanlığı" />
     <meta name="twitter:description" content="Ankara merkezli AI otomasyon danışmanlık firması. n8n, Gemini API ve OpenAI API ile CRM, e-posta, belge ve veri analitik otomasyonları." />
-    <meta name="twitter:image" content="/logo.png" />
+    <meta name="twitter:image" content="https://www.i-novaria.com/og-image.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.konusmacim.com/#app",
+      "name": "Konuşmacım",
+      "url": "https://www.konusmacim.com",
+      "description": "Türkiye'deki etkinlik konuşmacılarını listeleyen ücretsiz dizin. Organizatör konuşmacıyı konuya ve şehre göre bulur, doğrudan davet eder; aracılık veya komisyon yoktur.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "tr",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "TRY"
+      },
+      "publisher": {
+        "@id": "https://www.i-novaria.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "n8n ile iş süreçlerimi nasıl otomatize edebilirsiniz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "n8n'in görsel workflow editörünü kullanarak CRM güncellemeleri, e-posta bildirimleri, veri senkronizasyonu ve belge işleme gibi tekrar eden süreçlerinizi otomatize ediyoruz. Sıfırdan kurulum, test ve canlıya alma süreçlerini uçtan uca yönetiyoruz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Küçük ve orta ölçekli işletmeler için en uygun AI otomasyon çözümü nedir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KOBİ'ler için n8n tabanlı otomasyon sistemleri en maliyet etkin çözümdür. Pahalı kurumsal yazılım lisansları yerine işletmeye özel iş akışları kuruyoruz. Tipik başlangıç projesi 2-4 hafta içinde teslim edilir ve hemen ROI üretmeye başlar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Gemini API veya OpenAI API ile neler yapabilirsiniz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gemini API ve OpenAI API ile akıllı müşteri hizmetleri botları, otomatik içerik üretimi, belge analizi, veri özetleme ve karar destek sistemleri geliştiriyoruz. Bu API'leri n8n workflow'larına entegre ederek tamamen otomatik AI pipeline'ları oluşturuyoruz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "CRM otomasyonu kurmak ne kadar sürer ve maliyeti nedir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Temel bir CRM otomasyonu (lead yakalama, atama, takip e-postaları) genellikle 1-2 haftada tamamlanır. Karmaşık entegrasyonlar 3-6 haftayı bulabilir. Fiyatlandırma kapsama göre değiştiğinden projenizi anlatmanızı ve ücretsiz ön görüşme talep etmenizi öneririz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vibe Coding yaklaşımı nedir ve nasıl çalışır?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vibe Coding, Claude AI, Gemini ve GPT-4o gibi yapay zeka araçlarını geliştirme sürecine tam entegre ederek yazılım üretme hızını dramatik biçimde artıran modern bir yaklaşımdır. React, Next.js ve Node.js stack'iyle geleneksel yönteme kıyasla 3-5x daha hızlı ürün çıkarıyoruz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "E-posta pazarlama otomasyonu için hangi araçları kullanıyorsunuz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "n8n üzerinden Mailchimp, SendGrid veya özel SMTP entegrasyonlarıyla tetikleyici bazlı e-posta kampanyaları kuruyoruz. Kullanıcı davranışına göre otomatik segmentasyon ve OpenAI API ile kişiselleştirilmiş içerik üretimi sağlıyoruz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Belge ve fatura otomasyonu hizmetiniz nasıl işliyor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gelen fatura, sözleşme veya form verilerini otomatik olarak işleyen sistemler kuruyoruz. PDF parse etme, OCR ile veri çıkarma, muhasebe yazılımına otomatik kayıt ve onay akışları n8n ile uçtan uca otomatize ediliyor."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <!--page-head:end-->
     
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eef0f3" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121118" />
 
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": ["Organization", "ProfessionalService"],
-          "@id": "https://i-novaria.com/#organization",
-          "name": "i-novaria",
-          "url": "https://i-novaria.com",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://i-novaria.com/logo.png"
-          },
-          "description": "Ankara merkezli yapay zeka otomasyon danışmanlığı firması. n8n, Gemini API ve OpenAI API ile CRM, e-posta, belge ve veri analitik iş süreçleri otomasyonu.",
-          "email": "info@i-novaria.com",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Ankara",
-            "addressCountry": "TR"
-          },
-          "areaServed": "TR",
-          "knowsAbout": [
-            "n8n Workflow Automation",
-            "Gemini API",
-            "OpenAI API",
-            "Claude AI",
-            "Vibe Coding",
-            "AI Otomasyon",
-            "CRM Otomasyonu",
-            "Dijital Dönüşüm",
-            "React Native",
-            "Next.js"
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "i-novaria Hizmetleri",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "AI Otomasyon Danışmanlığı",
-                  "description": "n8n, Gemini API ve OpenAI API ile uçtan uca CRM, e-posta, belge ve veri analitik iş süreçleri otomasyonu. Telegram ve Slack bot entegrasyonları."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Vibe Coding",
-                  "description": "AI destekli hızlı uygulama geliştirme — React, Next.js, Node.js ile fikirden ürüne"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Web Sitesi Tasarımı",
-                  "description": "SEO optimizasyonlu, yüksek performanslı kurumsal web siteleri"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "E-Ticaret Sistemi",
-                  "description": "iyzico ve PayTR entegrasyonlu, Türkiye pazarına uygun e-ticaret çözümleri"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Mobil Oyun Geliştirme",
-                  "description": "React Native ve Expo ile Android platformu için mobil oyun geliştirme ve Google Play Store yayını"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "@type": "WebApplication",
-          "@id": "https://www.konusmacim.com/#app",
-          "name": "Konuşmacım",
-          "url": "https://www.konusmacim.com",
-          "description": "Türkiye'deki etkinlik konuşmacılarını listeleyen ücretsiz dizin. Organizatör konuşmacıyı konuya ve şehre göre bulur, doğrudan davet eder; aracılık veya komisyon yoktur.",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Web",
-          "inLanguage": "tr",
-          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY" },
-          "publisher": { "@id": "https://i-novaria.com/#organization" }
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://i-novaria.com/#website",
-          "name": "i-novaria",
-          "url": "https://i-novaria.com",
-          "publisher": { "@id": "https://i-novaria.com/#organization" }
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "n8n ile iş süreçlerimi nasıl otomatize edebilirsiniz?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "n8n'in görsel workflow editörünü kullanarak CRM güncellemeleri, e-posta bildirimleri, veri senkronizasyonu ve belge işleme gibi tekrar eden süreçlerinizi otomatize ediyoruz. Sıfırdan kurulum, test ve canlıya alma süreçlerini uçtan uca yönetiyoruz."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Küçük ve orta ölçekli işletmeler için en uygun AI otomasyon çözümü nedir?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "KOBİ'ler için n8n tabanlı otomasyon sistemleri en maliyet etkin çözümdür. Pahalı kurumsal yazılım lisansları yerine işletmeye özel iş akışları kuruyoruz. Tipik başlangıç projesi 2-4 hafta içinde teslim edilir ve hemen ROI üretmeye başlar."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Gemini API veya OpenAI API ile neler yapabilirsiniz?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Gemini API ve OpenAI API ile akıllı müşteri hizmetleri botları, otomatik içerik üretimi, belge analizi, veri özetleme ve karar destek sistemleri geliştiriyoruz. Bu API'leri n8n workflow'larına entegre ederek tamamen otomatik AI pipeline'ları oluşturuyoruz."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "CRM otomasyonu kurmak ne kadar sürer ve maliyeti nedir?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Temel bir CRM otomasyonu (lead yakalama, atama, takip e-postaları) genellikle 1-2 haftada tamamlanır. Karmaşık entegrasyonlar 3-6 haftayı bulabilir. Fiyatlandırma kapsama göre değiştiğinden projenizi anlatmanızı ve ücretsiz ön görüşme talep etmenizi öneririz."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Vibe Coding yaklaşımı nedir ve nasıl çalışır?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Vibe Coding, Claude AI, Gemini ve GPT-4o gibi yapay zeka araçlarını geliştirme sürecine tam entegre ederek yazılım üretme hızını dramatik biçimde artıran modern bir yaklaşımdır. React, Next.js ve Node.js stack'iyle geleneksel yönteme kıyasla 3-5x daha hızlı ürün çıkarıyoruz."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "E-posta pazarlama otomasyonu için hangi araçları kullanıyorsunuz?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "n8n üzerinden Mailchimp, SendGrid veya özel SMTP entegrasyonlarıyla tetikleyici bazlı e-posta kampanyaları kuruyoruz. Kullanıcı davranışına göre otomatik segmentasyon ve OpenAI API ile kişiselleştirilmiş içerik üretimi sağlıyoruz."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Belge ve fatura otomasyonu hizmetiniz nasıl işliyor?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Gelen fatura, sözleşme veya form verilerini otomatik olarak işleyen sistemler kuruyoruz. PDF parse etme, OCR ile veri çıkarma, muhasebe yazılımına otomatik kayıt ve onay akışları n8n ile uçtan uca otomatize ediliyor."
-              }
+      "@type": [
+        "Organization",
+        "ProfessionalService"
+      ],
+      "@id": "https://www.i-novaria.com/#organization",
+      "name": "i-novaria",
+      "url": "https://www.i-novaria.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.i-novaria.com/logo.png"
+      },
+      "description": "Ankara merkezli yapay zeka otomasyon danışmanlığı firması. n8n, Gemini API ve OpenAI API ile CRM, e-posta, belge ve veri analitik iş süreçleri otomasyonu.",
+      "email": "info@i-novaria.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ankara",
+        "addressCountry": "TR"
+      },
+      "areaServed": "TR",
+      "knowsAbout": [
+        "n8n Workflow Automation",
+        "Gemini API",
+        "OpenAI API",
+        "Claude AI",
+        "Vibe Coding",
+        "AI Otomasyon",
+        "CRM Otomasyonu",
+        "Dijital Dönüşüm",
+        "React Native",
+        "Next.js"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "i-novaria Hizmetleri",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Otomasyon Danışmanlığı",
+              "description": "n8n, Gemini API ve OpenAI API ile uçtan uca CRM, e-posta, belge ve veri analitik iş süreçleri otomasyonu. Telegram ve Slack bot entegrasyonları."
             }
-          ]
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Vibe Coding",
+              "description": "AI destekli hızlı uygulama geliştirme — React, Next.js, Node.js ile fikirden ürüne"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Sitesi Tasarımı",
+              "description": "SEO optimizasyonlu, yüksek performanslı kurumsal web siteleri"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "E-Ticaret Sistemi",
+              "description": "iyzico ve PayTR entegrasyonlu, Türkiye pazarına uygun e-ticaret çözümleri"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobil Oyun Geliştirme",
+              "description": "React Native ve Expo ile Android platformu için mobil oyun geliştirme ve Google Play Store yayını"
+            }
+          }
+        ]
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/i-novaria/"
+      ],
+      "owns": [
+        {
+          "@id": "https://www.konusmacim.com/#app"
         }
       ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.i-novaria.com/#website",
+      "name": "i-novaria",
+      "url": "https://www.i-novaria.com",
+      "publisher": {
+        "@id": "https://www.i-novaria.com/#organization"
+      }
     }
+  ]
+}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app-html--></div><!--app-state-->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

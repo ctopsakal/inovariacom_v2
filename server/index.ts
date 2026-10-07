@@ -95,7 +95,8 @@ app.use((req, res, next) => {
     {
       port,
       host: "0.0.0.0",
-      reusePort: true,
+      // Not supported on Windows; lets the production build run locally there.
+      reusePort: process.platform !== "win32",
     },
     () => {
       log(`serving on port ${port}`);

@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { GAMES, KONUSMACIM } from "@/lib/products";
+import { ProductLogo } from "@/components/product-badge";
 
 const konusmacimSteps = [
   {
@@ -110,11 +111,9 @@ export function ProductsSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="panel-link group flex gap-4 rounded-[14px] border border-line bg-surface p-5 sm:p-6"
-            data-testid={`link-game-${g.initial}`}
+            data-testid={`link-game-${g.name}`}
           >
-            <span className="font-display grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-brand-soft text-2xl text-brand">
-              {g.initial}
-            </span>
+            <ProductLogo product={g} className="h-14 w-14" />
             <div className="min-w-0 flex-1">
               <p className="text-xs font-medium uppercase tracking-wider text-faint">{g.kind} · Android</p>
               <h3 className="font-display mt-0.5 flex items-center gap-1.5 text-xl text-ink">

@@ -9,8 +9,15 @@ import { FaqSection } from "@/components/faq-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 
+// Same as the <title> in client/index.html; restored when navigating back from the blog.
+const HOME_TITLE = "i-novaria | AI Otomasyon & Dijital Dönüşüm Danışmanlığı";
+
 export default function Home() {
   const [location] = useLocation();
+
+  useEffect(() => {
+    document.title = HOME_TITLE;
+  }, []);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
