@@ -36,7 +36,18 @@ export function ProductStack() {
     }, FLY_MS);
   };
 
-  // Restarts whenever the order changes, so a manual swipe also resets the countdown.
+  // Bumped when the tab becomes visible again, to restart the countdown below.
+  const [visibleTick, setVisibleTick] = useState(0);
+  useEffect(() => {
+    const onVisibility = () => {
+      if (!document.hidden) setVisibleTick((t) => t + 1);
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, []);
+
+  // Restarts whenever the order changes, so a manual swipe also resets the countdown. A tick that lands while
+  // the tab is hidden (e.g. a product just opened in a new tab) does nothing; visibleTick restarts it later.
   useEffect(() => {
     if (paused || drag) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -45,7 +56,7 @@ export function ProductStack() {
     }, AUTO_MS);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [order, paused, drag]);
+  }, [order, paused, drag, visibleTick]);
 
   // Keyboard users keep focus on whichever card is now in front.
   useEffect(() => {
@@ -81,10 +92,12 @@ export function ProductStack() {
       role="group"
       aria-roledescription="kart destesi"
       aria-label="Kendi ürünlerimiz"
-      // Mouse only: on touch screens a tap would leave the stack "hovered" and stop auto-advance for good.
-      onPointerEnter={(e) => e.pointerType === "mouse" && setPaused(true)}
+      // Hover pause: mouse only (a tap would leave touch screens "hovered" for good) and only on real movement,
+      // so a card flying under a resting cursor doesn't pause the stack.
+      onPointerMove={(e) => e.pointerType === "mouse" && !paused && setPaused(true)}
       onPointerLeave={(e) => e.pointerType === "mouse" && setPaused(false)}
-      onFocus={() => setPaused(true)}
+      // Keyboard focus only: clicking or dragging a card also focuses it, which must not stop auto-advance.
+      onFocus={(e) => e.target.matches(":focus-visible") && setPaused(true)}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) setPaused(false);
       }}
