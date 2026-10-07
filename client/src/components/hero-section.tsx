@@ -1,13 +1,4 @@
-import { useState } from "react";
-import { PRODUCTS } from "@/lib/products";
-import { ProductBadgeBody, badgeClass } from "@/components/product-badge";
-
-// Resting pose per card (first = front at rest), as in Konuşmacım's hero stack.
-const POSES = [
-  { x: 50, y: 95, rot: -2, scale: 1 },
-  { x: 110, y: 0, rot: 8, scale: 0.94 },
-  { x: 0, y: 30, rot: -9, scale: 0.94 },
-];
+import { ProductStack } from "@/components/product-stack";
 
 const stats = [
   { value: "100+", label: "tamamlanan proje" },
@@ -16,10 +7,6 @@ const stats = [
 ];
 
 export function HeroSection() {
-  // Index into PRODUCTS of the card in front; hovering or focusing a back card brings it forward.
-  const [front, setFront] = useState(0);
-  const order = PRODUCTS.map((_, i) => i).sort((a, b) => (a === front ? -1 : b === front ? 1 : a - b));
-
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -64,34 +51,8 @@ export function HeroSection() {
 
       {/* On phones the 380px stack is scaled down so the page never gets wider than the screen. */}
       <div className="mx-auto h-[380px] w-[327px] sm:h-[440px] sm:w-[380px] lg:mx-0">
-        <div
-          className="relative h-[440px] w-[380px] origin-top-left scale-[0.86] sm:scale-100"
-          role="group"
-          aria-label="Kendi ürünlerimiz"
-        >
-          {PRODUCTS.map((p, productIndex) => {
-              // Cards keep their pose; only the stacking order changes, so a raised card stays under the pointer.
-              const pose = POSES[productIndex];
-              return (
-                <a
-                  key={p.name}
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${p.name} (${p.kind}), yeni sekmede açılır`}
-                  onMouseEnter={() => setFront(productIndex)}
-                  onFocus={() => setFront(productIndex)}
-                  className={`${badgeClass(p)} absolute left-0 top-0 w-[270px] shadow-xl hover:border-ink`}
-                  style={{
-                    transform: `translate(${pose.x}px, ${pose.y}px) rotate(${pose.rot}deg) scale(${pose.scale})`,
-                    zIndex: PRODUCTS.length - order.indexOf(productIndex),
-                  }}
-                  data-testid={`hero-product-${productIndex}`}
-                >
-                  <ProductBadgeBody product={p} />
-                </a>
-              );
-            })}
+        <div className="w-[380px] origin-top-left scale-[0.86] sm:scale-100">
+          <ProductStack />
         </div>
       </div>
     </section>
