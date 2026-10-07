@@ -1,114 +1,84 @@
-import { Badge } from "@/components/ui/badge";
-import { Building2, MapPin, Bot, Zap, Globe2, FileText } from "lucide-react";
-import { motion } from "framer-motion";
+import { Bot, Zap, Globe2, FileText, MapPin } from "lucide-react";
 
 const technologies = [
-  { name: "n8n", description: "Workflow Otomasyon" },
+  { name: "n8n", description: "Workflow otomasyon" },
   { name: "Claude AI", description: "Anthropic" },
   { name: "Gemini API", description: "Google AI" },
   { name: "OpenAI API", description: "GPT-4o" },
-  { name: "Vibe Coding", description: "AI Geliştirme" },
+  { name: "Vibe Coding", description: "AI geliştirme" },
   { name: "React / Next.js", description: "Frontend" },
   { name: "Node.js", description: "Backend" },
   { name: "React Native", description: "Mobil" },
 ];
 
 const focusAreas = [
-  { icon: Bot, title: "CRM Otomasyonu", description: "Satış ve müşteri süreçlerini n8n ile otomatize edin" },
-  { icon: Zap, title: "E-posta & Pazarlama", description: "Akıllı tetikleyici bazlı kampanyalar" },
-  { icon: Globe2, title: "Veri & Raporlama", description: "Otomatik dashboard ve analitik sistemler" },
-  { icon: FileText, title: "Belge Otomasyonu", description: "Fatura, sözleşme ve form işleme" },
+  { icon: Bot, title: "CRM otomasyonu", description: "Satış ve müşteri süreçlerini n8n ile otomatize edin" },
+  { icon: Zap, title: "E-posta & pazarlama", description: "Akıllı tetikleyici bazlı kampanyalar" },
+  { icon: Globe2, title: "Veri & raporlama", description: "Otomatik dashboard ve analitik sistemler" },
+  { icon: FileText, title: "Belge otomasyonu", description: "Fatura, sözleşme ve form işleme" },
 ];
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Badge variant="secondary" className="mb-4">
-              <Building2 className="w-4 h-4 mr-2" />
-              Hakkımızda
-            </Badge>
+    <section id="about" className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+      <div className="grid items-start gap-12 lg:grid-cols-2">
+        <div>
+          <p className="section-label">Hakkımızda</p>
+          <h2 className="font-display mt-3 text-3xl leading-[1.08] text-ink sm:text-4xl">
+            Yapay zekâ ile <span className="marker">iş süreçlerini</span> dönüştürüyoruz
+          </h2>
 
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-              Yapay Zeka ile{" "}
-              <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-                İş Süreçlerini
-              </span>{" "}
-              Dönüştürüyoruz
-            </h2>
-
-            <p className="text-lg text-muted-foreground mb-4">
-              i-novaria, Ankara merkezli bir dijital dönüşüm ve yapay zeka otomasyon danışmanlık
-              firmasıdır.{" "}
-              <strong className="text-foreground">
-                n8n, Claude AI, Gemini API ve OpenAI API
-              </strong>{" "}
-              kullanarak işletmelerin tekrar eden süreçlerini otomatize ediyoruz.
+          <div className="mt-6 space-y-4 leading-relaxed text-ink-soft">
+            <p className="text-lg">
+              i-novaria, Ankara merkezli bir dijital dönüşüm ve yapay zekâ otomasyon danışmanlık firmasıdır.{" "}
+              <strong className="font-semibold text-ink">n8n, Claude AI, Gemini API ve OpenAI API</strong> kullanarak
+              işletmelerin tekrar eden süreçlerini otomatize ediyoruz.
             </p>
-
-            <p className="text-muted-foreground mb-4">
-              Vibe Coding yaklaşımıyla web uygulamaları ve mobil oyunlar geliştiriyor; CRM
-              entegrasyonundan e-posta otomasyonuna, belge işlemeden veri analitiğine kadar uçtan uca
-              AI çözümleri sunuyoruz.
+            <p>
+              Vibe Coding yaklaşımıyla web uygulamaları ve mobil oyunlar geliştiriyor; CRM entegrasyonundan e-posta
+              otomasyonuna, belge işlemeden veri analitiğine kadar uçtan uca AI çözümleri sunuyoruz.
             </p>
-
-            <p className="text-muted-foreground mb-8">
-              Büyük kurumsal yazılımlar yerine işletmenize özel, ölçeklenebilir otomasyon sistemleri
-              kuruyoruz.
+            <p>
+              Büyük kurumsal yazılımlar yerine işletmenize özel, ölçeklenebilir otomasyon sistemleri kuruyoruz. Önerdiğimiz
+              her yöntemi önce{" "}
+              <a href="#urunler" className="font-semibold text-ink underline underline-offset-2">
+                kendi ürünlerimizde
+              </a>{" "}
+              deniyoruz.
             </p>
+          </div>
 
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="w-4 h-4 text-violet-600" />
-              <span>Ankara, Türkiye</span>
-            </div>
-          </motion.div>
+          <p className="mt-6 inline-flex items-center gap-2 text-sm text-faint">
+            <MapPin className="h-4 w-4" aria-hidden />
+            Ankara, Türkiye
+          </p>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="space-y-8"
-          >
-            <div>
-              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-                Kullandığımız Teknolojiler
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {technologies.map((tech) => (
-                  <div
-                    key={tech.name}
-                    className="px-3 py-2 rounded-lg bg-card border border-border text-sm"
-                  >
-                    <span className="font-medium text-foreground">{tech.name}</span>
-                    <span className="text-muted-foreground ml-1 text-xs">— {tech.description}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+        <div className="space-y-10">
+          <div>
+            <h3 className="section-label mb-3">Kullandığımız teknolojiler</h3>
+            <ul className="flex flex-wrap gap-2">
+              {technologies.map((tech) => (
+                <li key={tech.name} className="tag tag-on-ground !px-3 !py-1.5 !text-sm">
+                  <span className="font-semibold text-ink">{tech.name}</span>
+                  <span className="text-faint">· {tech.description}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div>
-              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-                Uzmanlık Alanlarımız
-              </h3>
-              <div className="grid grid-cols-2 gap-3">
-                {focusAreas.map((area) => (
-                  <div key={area.title} className="p-4 rounded-xl bg-card border border-border">
-                    <area.icon className="w-5 h-5 text-violet-600 mb-2" />
-                    <p className="font-medium text-foreground text-sm">{area.title}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{area.description}</p>
-                  </div>
-                ))}
-              </div>
+          <div>
+            <h3 className="section-label mb-3">Uzmanlık alanlarımız</h3>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {focusAreas.map((area) => (
+                <div key={area.title} className="rounded-[14px] border border-line bg-surface p-5">
+                  <area.icon className="mb-3 h-5 w-5 text-brand" aria-hidden />
+                  <p className="font-semibold text-ink">{area.title}</p>
+                  <p className="mt-1 text-sm text-ink-soft">{area.description}</p>
+                </div>
+              ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

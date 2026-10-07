@@ -1,8 +1,3 @@
-import { useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { ChevronDown, HelpCircle } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-
 const faqs = [
   {
     question: "n8n ile iş süreçlerimi nasıl otomatize edebilirsiniz?",
@@ -42,84 +37,29 @@ const faqs = [
 ];
 
 export function FaqSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   return (
-    <section id="faq" className="py-24 bg-muted/30">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <Badge variant="secondary" className="mb-4">
-              <HelpCircle className="w-4 h-4 mr-2" />
-              Sık Sorulan Sorular
-            </Badge>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-bold text-foreground mb-4"
-          >
-            Merak Ettiğiniz{" "}
-            <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-              Her Şey
-            </span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-muted-foreground"
-          >
-            AI otomasyon ve dijital dönüşüm hizmetlerimiz hakkında en çok sorulan sorular
-          </motion.p>
+    <section id="faq" className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,2fr)]">
+        <div>
+          <p className="section-label">Sık sorulan sorular</p>
+          <h2 className="font-display mt-3 text-3xl leading-[1.08] text-ink sm:text-4xl">Merak ettikleriniz</h2>
+          <p className="mt-4 text-ink-soft">AI otomasyon ve dijital dönüşüm hizmetlerimiz hakkında en çok sorulanlar.</p>
         </div>
 
-        <div className="space-y-3">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-            >
-              <div className="rounded-xl border border-border bg-card overflow-hidden">
-                <button
-                  className="w-full flex items-center justify-between p-6 text-left hover:bg-muted/50 transition-colors"
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  aria-expanded={openIndex === index}
+        <div className="border-t border-line">
+          {faqs.map((faq) => (
+            <details key={faq.question} className="group border-b border-line">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 py-5 font-semibold text-ink [&::-webkit-details-marker]:hidden">
+                {faq.question}
+                <span
+                  aria-hidden
+                  className="mt-0.5 shrink-0 text-lg leading-none text-faint transition-transform group-open:rotate-45"
                 >
-                  <span className="font-medium text-foreground pr-4">{faq.question}</span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform duration-200 ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                <AnimatePresence initial={false}>
-                  {openIndex === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <p className="px-6 pb-6 text-muted-foreground">{faq.answer}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </motion.div>
+                  +
+                </span>
+              </summary>
+              <p className="-mt-1 pb-5 pr-8 leading-relaxed text-ink-soft">{faq.answer}</p>
+            </details>
           ))}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  darkMode: ["class"],
+  darkMode: "media",
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
@@ -75,6 +75,15 @@ export default {
           foreground: "hsl(var(--sidebar-accent-foreground) / <alpha-value>)",
           border: "var(--sidebar-accent-border)"
         },
+        ground: "var(--ground)",
+        surface: "var(--surface)",
+        ink: "var(--ink)",
+        "ink-soft": "var(--ink-soft)",
+        faint: "var(--faint)",
+        line: "var(--line)",
+        brand: "var(--brand)",
+        "brand-soft": "var(--brand-soft)",
+        spot: "var(--spot)",
         status: {
           online: "rgb(34 197 94)",
           away: "rgb(245 158 11)",

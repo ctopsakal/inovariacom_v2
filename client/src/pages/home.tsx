@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "wouter";
 import { Navbar } from "@/components/navbar";
 import { HeroSection } from "@/components/hero-section";
+import { ProductsSection } from "@/components/products-section";
 import { ServicesSection } from "@/components/services-section";
 import { AboutSection } from "@/components/about-section";
 import { FaqSection } from "@/components/faq-section";
@@ -29,6 +30,7 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
+        <ProductsSection />
         <ServicesSection />
         <AboutSection />
         <FaqSection />

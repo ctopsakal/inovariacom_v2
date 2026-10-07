@@ -1,149 +1,120 @@
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { 
-  Linkedin, 
-  Twitter, 
-  Mail,
-  ExternalLink
-} from "lucide-react";
+import { Link, useLocation } from "wouter";
+import { Linkedin, Mail } from "lucide-react";
+import { PRODUCTS } from "@/lib/products";
+
+const serviceLinks = [
+  "Vibe Coding",
+  "Dijital Dönüşüm Danışmanlığı",
+  "Web Sitesi Tasarımı",
+  "E-Ticaret Sistemi",
+  "Mobil Oyun Geliştirme",
+];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const [location] = useLocation();
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const goToSection = (id: string) => {
+    if (location !== "/") {
+      window.location.href = `/?section=${id}`;
+      return;
     }
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const linkClass = "text-ink-soft hover:text-ink transition-colors text-left";
+
   return (
-    <footer className="bg-card border-t border-card-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4" data-testid="footer-logo">
-              <img src="/logo.png" alt="i-novaria logo" className="w-8 h-8 rounded-md" />
-              <span className="text-xl font-bold text-foreground">i-novaria</span>
+    <footer className="mt-12 border-t border-line">
+      <div className="mx-auto max-w-6xl px-4 py-12">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <div className="mb-4 flex items-center gap-2" data-testid="footer-logo">
+              <span className="h-9 w-9 overflow-hidden rounded-lg border border-line bg-white">
+                <img src="/logo.png" alt="" className="h-full w-full scale-[1.9] object-contain" />
+              </span>
+              <span className="font-display text-xl text-ink">i-novaria</span>
             </div>
-            <p className="text-muted-foreground text-sm mb-4" data-testid="text-footer-description">
-              Vibe coding, web sitesi tasarımı, e-ticaret ve mobil oyun geliştirme alanlarında
-              freelance yazılım & dijital çözümler sunuyoruz.
+            <p className="mb-4 text-sm leading-relaxed text-ink-soft" data-testid="text-footer-description">
+              Yapay zekâ otomasyonu, Vibe Coding, web, e-ticaret ve mobil oyun geliştirme. Kendi ürünlerimizi de
+              geliştirip işletiyoruz.
             </p>
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" size="icon" asChild>
-                <a href="https://www.linkedin.com/company/i-novaria/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-testid="link-linkedin">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a href="mailto:info@i-novaria.com" aria-label="Email" data-testid="link-email">
-                  <Mail className="w-5 h-5" />
-                </a>
-              </Button>
+            <div className="flex items-center gap-1">
+              <a
+                href="https://www.linkedin.com/company/i-novaria/?viewAsMember=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="grid h-9 w-9 place-items-center rounded-lg text-ink-soft hover:bg-surface hover:text-ink"
+                data-testid="link-linkedin"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="mailto:info@i-novaria.com"
+                aria-label="E-posta"
+                className="grid h-9 w-9 place-items-center rounded-lg text-ink-soft hover:bg-surface hover:text-ink"
+                data-testid="link-email"
+              >
+                <Mail className="h-5 w-5" />
+              </a>
             </div>
           </div>
 
           <div>
-            <h3 className="font-semibold text-foreground mb-4" data-testid="text-footer-services-heading">Hizmetler</h3>
-            <ul className="space-y-2">
-              <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="text-muted-foreground text-sm"
-                  data-testid="footer-vibe-coding"
-                >
-                  Vibe Coding
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="text-muted-foreground text-sm"
-                  data-testid="footer-digital"
-                >
-                  Dijital Dönüşüm Danışmanlığı
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="text-muted-foreground text-sm"
-                  data-testid="footer-web"
-                >
-                  Web Sitesi Tasarımı
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="text-muted-foreground text-sm"
-                  data-testid="footer-ecommerce"
-                >
-                  E-Ticaret Sistemi
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="text-muted-foreground text-sm"
-                  data-testid="footer-mobile"
-                >
-                  Mobil Oyun Geliştirme
-                </button>
-              </li>
+            <h3 className="section-label mb-4" data-testid="text-footer-services-heading">Hizmetler</h3>
+            <ul className="space-y-2 text-sm">
+              {serviceLinks.map((s) => (
+                <li key={s}>
+                  <button onClick={() => goToSection("services")} className={linkClass}>
+                    {s}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold text-foreground mb-4" data-testid="text-footer-projects-heading">Projeler</h3>
-            <ul className="space-y-2">
-              <li>
-                <span className="text-muted-foreground text-sm" data-testid="text-project-nodelinq"><a href="https://play.google.com/store/apps/details?id=com.innovaria.wordmap" target="_blank" aria-label="wordduel" data-testid="link-wordduel">Word Duel: Claim the Grid (Mobil Oyun)</a></span>
-              </li>
-              <li>
-                <span className="text-muted-foreground text-sm" data-testid="text-project-wordmap"><a href="https://play.google.com/store/apps/details?id=com.ctopsakal.echopath" target="_blank" aria-label="echopath" data-testid="link-echopath">EchoPath: Mind's Echo(Mobil Oyun)</a></span>
-              </li>
-              <li>
-                <span className="text-muted-foreground text-sm" data-testid="text-project-nodelinq">NodeLinq (Yakında)</span>
-              </li>
+            <h3 className="section-label mb-4" data-testid="text-footer-projects-heading">Ürünler</h3>
+            <ul className="space-y-2 text-sm">
+              {PRODUCTS.map((p) => (
+                <li key={p.name}>
+                  <a href={p.url} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                    {p.name} <span className="text-faint">· {p.kind}</span>
+                  </a>
+                </li>
+              ))}
+              <li className="text-faint">NodeLinq · yakında</li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold text-foreground mb-4" data-testid="text-footer-contact-heading">İletişim</h3>
-            <ul className="space-y-2">
+            <h3 className="section-label mb-4" data-testid="text-footer-contact-heading">İletişim</h3>
+            <ul className="space-y-2 text-sm">
               <li>
-                <button
-                  onClick={() => scrollToSection("contact")}
-                  className="text-muted-foreground text-sm"
-                  data-testid="footer-contact"
-                >
-                  Bize Ulaşın
+                <button onClick={() => goToSection("contact")} className={linkClass} data-testid="footer-contact">
+                  Bize ulaşın
                 </button>
               </li>
               <li>
-                <a href="mailto:info@i-novaria.com" className="text-muted-foreground text-sm" data-testid="footer-email">
+                <a href="mailto:info@i-novaria.com" className={linkClass} data-testid="footer-email">
                   info@i-novaria.com
                 </a>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm" data-testid="footer-location">Ankara, Türkiye</span>
+                <Link href="/blog" className={linkClass}>
+                  Blog
+                </Link>
+              </li>
+              <li className="text-faint" data-testid="footer-location">
+                Ankara, Türkiye
               </li>
             </ul>
           </div>
         </div>
 
-        <Separator className="mb-8" />
-
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground" data-testid="text-copyright">
-            {currentYear} i-novaria. Tüm hakları saklıdır.
-          </p>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-muted-foreground" data-testid="link-privacy">Gizlilik Politikası</span>
-            <span className="text-sm text-muted-foreground" data-testid="link-terms">Kullanım Şartları</span>
-          </div>
+        <div className="mt-10 border-t border-line pt-6 text-sm text-faint">
+          <p data-testid="text-copyright">© {currentYear} i-novaria. Tüm hakları saklıdır.</p>
         </div>
       </div>
     </footer>

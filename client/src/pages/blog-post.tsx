@@ -22,7 +22,7 @@ export default function BlogPostPage() {
     return (
       <div className="min-h-screen bg-background flex flex-col">
         <Navbar />
-        <main className="max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-24 pb-16 flex-1">
+        <main className="max-w-3xl mx-auto w-full px-4 pt-28 pb-16 flex-1">
           <div className="flex items-center justify-center h-96">
             <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
           </div>
@@ -36,9 +36,9 @@ export default function BlogPostPage() {
     return (
       <div className="min-h-screen bg-background flex flex-col">
         <Navbar />
-        <main className="max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-24 pb-16 flex-1">
+        <main className="max-w-3xl mx-auto w-full px-4 pt-28 pb-16 flex-1">
           <Link href="/blog">
-            <button className="flex items-center gap-2 text-violet-600 hover:text-violet-700 mb-8 transition">
+            <button className="flex items-center gap-2 text-sm text-ink-soft hover:text-ink mb-8 transition">
               <ArrowLeft className="w-4 h-4" /> Tüm Yazılara Dön
             </button>
           </Link>
@@ -56,16 +56,16 @@ export default function BlogPostPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
-      <main className="max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-24 pb-16 flex-1">
+      <main className="max-w-3xl mx-auto w-full px-4 pt-28 pb-16 flex-1">
         <Link href="/blog">
-          <button className="flex items-center gap-2 text-violet-600 hover:text-violet-700 mb-8 transition">
+          <button className="flex items-center gap-2 text-sm text-ink-soft hover:text-ink mb-8 transition">
             <ArrowLeft className="w-4 h-4" /> Tüm Yazılara Dön
           </button>
         </Link>
 
         <article>
           <header className="mb-8">
-            <h1 className="text-4xl font-bold text-foreground mb-4">{post.title}</h1>
+            <h1 className="font-display text-4xl sm:text-5xl leading-[1.05] text-ink mb-4">{post.title}</h1>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
@@ -85,9 +85,9 @@ export default function BlogPostPage() {
           <div className="max-w-none mb-8">
             <ReactMarkdown
               components={{
-                h2: ({ node, ...props }) => <h2 className="text-2xl font-semibold mt-8 mb-4 !text-foreground" {...props} />,
+                h2: ({ node, ...props }) => <h2 className="font-display text-2xl mt-10 mb-4 !text-foreground" {...props} />,
                 h3: ({ node, ...props }) => <h3 className="text-xl font-semibold mt-6 mb-3 !text-foreground" {...props} />,
-                p: ({ node, ...props }) => <p className="mb-4 !text-foreground leading-relaxed" {...props} />,
+                p: ({ node, ...props }) => <p className="mb-4 !text-ink-soft text-lg leading-relaxed" {...props} />,
                 ul: ({ node, ...props }) => <ul className="list-disc list-inside mb-4 !text-foreground space-y-2" {...props} />,
                 ol: ({ node, ...props }) => <ol className="list-decimal list-inside mb-4 !text-foreground space-y-2" {...props} />,
                 li: ({ node, ...props }) => <li className="mb-2 !text-foreground" {...props} />,
@@ -96,7 +96,7 @@ export default function BlogPostPage() {
                 td: ({ node, ...props }) => <td className="border border-muted p-2 text-foreground" {...props} />,
                 blockquote: ({ node, ...props }) => (
                   <blockquote
-                    className="border-l-4 border-violet-600 pl-4 py-2 my-4 italic text-foreground"
+                    className="border-l-4 border-brand pl-4 py-2 my-4 italic text-foreground"
                     {...props}
                   />
                 ),
